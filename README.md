@@ -1,1 +1,1 @@
-# BUDGET APP vanilla js, local store
+# BUDGET APP vanilla js, local storage
