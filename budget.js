@@ -71,9 +71,9 @@ addExpense.addEventListener("click", () => {
 		expenseAmount.classList.add('warning');
 		setTimeout(()=> expenseAmount.classList.remove('warning'),3000);
 		setTimeout(()=> expenseTitle.classList.remove("warning"),3000);
-	}
+	} else {
 
-	let expense = {
+		let expense = {
 		type: "expense",
 		title: expenseTitle.value,
 		amount: expenseAmount.value
@@ -82,6 +82,9 @@ addExpense.addEventListener("click", () => {
 	ENTRY_LIST.push(expense);
 	updateUI();
 	clearInput([expenseTitle, expenseAmount]);
+	}
+
+
 
 })
 
@@ -92,9 +95,8 @@ addIncome.addEventListener("click", () => {
 		incomeAmount.classList.add('warning');
 		setTimeout(()=> incomeAmount.classList.remove('warning'),3000);
 		setTimeout(()=> incomeTitle.classList.remove("warning"),3000);
-	}
-
-	let income = {
+	} else {
+		let income = {
 		type: "income",
 		title: incomeTitle.value,
 		amount: incomeAmount.value
@@ -105,6 +107,9 @@ addIncome.addEventListener("click", () => {
 	updateUI();
 	clearInput([incomeTitle, incomeAmount]);
 
+	}
+
+	
 
 })
 
