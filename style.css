@@ -250,7 +250,7 @@ input[type=number] {
     display: block;
     width: 360px;
     bottom: 0;
-    border-top: 1px solid ;
+    border-top: 1px solid  #ccc;
 }
 
 .budget-dashboard #expense .input * {
@@ -261,18 +261,19 @@ input[type=number] {
 .budget-dashboard #expense .input input#expense-title-input{
     height: 40px;
     width: 150px;
-    padding-left: 0px;
+    padding-left: 10px;
     font-family: 'Gilroy';
     margin: 5px;
-    margin-left: 0px;
+    margin-left: 10px;
     border-radius: 10px 0 0 10px;
     border: none;
+    font-size: 1.2em;
 }
 
 .budget-dashboard #expense .input input#expense-amount-input{
     height: 40px;
     width: 110px;
-    padding-left: 0px;
+    padding-left: 10px;
     font-size: 1.2em;
     font-family: 1.2em;
     font-family: 'Gilroy';
@@ -367,7 +368,7 @@ input[type=number] {
     font-size: 1.2em;
     font-family: 'Gilroy';
     margin: 5px;
-    margin-left: 0px;
+    margin-left: 10px;
     border-radius: 10px 0 0 10px;
     border: none;
 }
@@ -384,7 +385,7 @@ input[type=number] {
     border: none;
 }
 
-.budget-dahsboard #income .input .add-income img{
+.budget-dashboard #income .input .add-income img {
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -401,4 +402,44 @@ input[type=number] {
     overflow-x: auto;
 }
 
+.budget-dashboard #income ul.list li{
+    position: relative;
+    font-size: 1em;
+}
 
+.budget-dashboard #income ul.list li *{
+    display: inline-block;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.budget-dashborad #income ul.list li .entry{
+    width: 250px;
+    height: auto;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    font-family: 'Gilroy Bold';
+}
+
+.budget-dashboard #income ul.list li #edit {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 50px;
+    cursor: pointer;
+    background-image: url('icons/edit.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;    
+}
+
+.budget-dashboard #income ul.list li #delete {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-image: url('icons/trash.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
