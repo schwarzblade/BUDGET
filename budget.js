@@ -10,7 +10,7 @@ const expenseEl = document.querySelector("#expense");
 const allEl = document.querySelector("#all");
 const incomeList = document.querySelector('#income .list');
 const expenseList = document.querySelector('#expense .list');
-const allList = document.querySelector("#all");
+const allList = document.querySelector('#all .list');
 
 
 //select btn
@@ -76,7 +76,7 @@ addExpense.addEventListener("click", () => {
 		let expense = {
 		type: "expense",
 		title: expenseTitle.value,
-		amount: expenseAmount.value
+		amount: parseInt(expenseAmount.value)
 	}
 
 	ENTRY_LIST.push(expense);
@@ -99,7 +99,7 @@ addIncome.addEventListener("click", () => {
 		let income = {
 		type: "income",
 		title: incomeTitle.value,
-		amount: incomeAmount.value
+		amount: parseInt(incomeAmount.value)
 	}
 
 	ENTRY_LIST.push(income);
@@ -114,29 +114,36 @@ addIncome.addEventListener("click", () => {
 })
 
 
-//helpers
+//                       helpers                 //////////////////////////////////////
 
 function updateUI(){
+
 income = calculateTotal("income",ENTRY_LIST);
-outcome = calculateTotal("outcome",ENTRY_LIST);
-balance = calculateBalance(income,outcome);
-
-
-
-clearElement([expenseList, incomeList, allList]);
-
+outcome = calculateTotal("expense",ENTRY_LIST);
+balance = Math.abs(calculateBalance(income,outcome));
 
 let sign = (income >= outcome) ? "$" : "-$";
+
+balanceEl.innerHTML = `<small>${sign}</small>${balance}`;
+outcomeTotalEl.innerHTML = `<small>$</small>${outcome}`;
+incomeTotalEl.innerHTML = `<small>$</small>${income}`;
+
+
+
+
+//update UI
+
+clearElement([expenseList, incomeList, allList]);
 
 ENTRY_LIST.forEach( (entry,index) => {
 	if(entry.type == "expense"){
 		showEntry(expenseList,entry.type,entry.title, entry.amount, index)
-	} else if(entry.type= "income"){
+	} else if (entry.type == "income") { 
 		showEntry(incomeList,entry.type,entry.title, entry.amount, index)
-	}
-	showEntry(allList,entry.type,entry.title, entry.amount, index);
+	} 
+	  showEntry(allList, entry.type, entry.title, entry.amount, index)
+	});
 
-});
 }
 function showEntry(list,type,title,amount,id){
 	const entry = `<li id= "${id}" class="${type}">
