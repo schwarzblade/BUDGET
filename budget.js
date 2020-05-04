@@ -114,9 +114,17 @@ addIncome.addEventListener("click", () => {
 })
 
 
-//                       helpers                 //////////////////////////////////////
+      
+
+
+//                helpers                 //////////////////////////////////////
+
+
+
 
 function updateUI(){
+
+
 
 income = calculateTotal("income",ENTRY_LIST);
 outcome = calculateTotal("expense",ENTRY_LIST);
@@ -131,7 +139,6 @@ incomeTotalEl.innerHTML = `<small>$</small>${income}`;
 
 
 
-//update UI
 
 clearElement([expenseList, incomeList, allList]);
 
@@ -143,6 +150,8 @@ ENTRY_LIST.forEach( (entry,index) => {
 	} 
 	  showEntry(allList, entry.type, entry.title, entry.amount, index)
 	});
+
+updateChart(income,outcome);
 
 }
 function showEntry(list,type,title,amount,id){
