@@ -85,10 +85,10 @@ addExpense.addEventListener("click", () => {
 	updateUI();
 	clearInput([expenseTitle, expenseAmount]);
 	}
-
-
-
 })
+
+
+
 
 
 addIncome.addEventListener("click", () => {
@@ -111,17 +111,50 @@ addIncome.addEventListener("click", () => {
 
 	}
 
-	
-
 })
 
 
-      
+expenseList.addEventListener('click',deleteOrEdit)
+incomeList.addEventListener('click',deleteOrEdit)
+allList.addEventListener('click',deleteOrEdit)
+
 
 
 //                helpers                 //////////////////////////////////////
 
+function deleteOrEdit(e){
 
+
+	const targetBtn = e.target;
+
+	const entry = targetBtn.parentNode;
+
+	if(targetBtn.id == DELETE){
+		deleteEntry(entry);
+	}else if(targetBtn.id == EDIT){
+		editEntry(entry);
+	}
+}
+
+function deleteEntry(entry){
+	ENTRY_LIST.splice(entry.id,1);
+	updateUI();
+}
+
+
+function editEntry(entry){
+	let ENTRY = ENTRY_LIST[entry.id];
+
+	if(ENTRY.type == "income"){
+		incomeAmount.value = ENTRY.amount;
+		incomeTitle.value = ENTRY.title;
+	} else if(ENTRY.type == "expense"){
+		expenseAmount.value = ENTRY.amount;
+		expenseTitle.value = ENTRY.title;
+	}
+
+	deleteEntry(entry);
+}
 
 
 function updateUI(){
