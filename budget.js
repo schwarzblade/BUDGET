@@ -36,12 +36,14 @@ const incomeAmount = document.getElementById('income-amount-input');
 //variables
 
 
-let ENTRY_LIST= [];
+let ENTRY_LIST;
 let balance = 0, income = 0, outcome = 0;
 
 const DELETE = 'delete', EDIT = 'edit';
 
-
+//look if ther are saved data in localsotrage
+ENTRY_LIST = JSON.parse(localStorage.getItem("entry_list")) || [];
+updateUI();
 //event listeners
 
 expenseBtn.addEventListener("click",()=> {
@@ -153,7 +155,13 @@ ENTRY_LIST.forEach( (entry,index) => {
 
 updateChart(income,outcome);
 
+localStorage.setItem("entry_list", JSON.stringify(ENTRY_LIST));
+
 }
+
+
+
+
 function showEntry(list,type,title,amount,id){
 	const entry = `<li id= "${id}" class="${type}">
 				<div class="entry">${title}: $${amount}</div>
